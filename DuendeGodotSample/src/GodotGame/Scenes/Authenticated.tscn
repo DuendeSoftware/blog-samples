@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/AuthenticatedScene.cs" id="1_authscene"]
+[ext_resource type="Theme" path="res://Theme/DuendeTheme.tres" id="2_theme"]
+
+[node name="Authenticated" type="Control"]
+theme = ExtResource("2_theme")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_authscene")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.165, 0.161, 0.161, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(900, 0)
+theme_override_constants/separation = 40
+
+[node name="SuccessLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Authentication Successful!"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 56
+theme_override_colors/font_color = Color(0.38, 0.984, 0.573, 1)
+
+[node name="GreetingLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Welcome!"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 44
+
+[node name="Separator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClaimsLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "User Claims:"
+horizontal_alignment = 0
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.69, 0.69, 0.69, 1)
+
+[node name="NameLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Name: ..."
+theme_override_font_sizes/font_size = 34
+
+[node name="SubLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Subject: ..."
+theme_override_font_sizes/font_size = 34
+
+[node name="EmailLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Email: ..."
+theme_override_font_sizes/font_size = 34
+
+[node name="Separator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LogoutButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 100)
+text = "Logout"

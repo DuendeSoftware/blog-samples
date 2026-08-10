@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/IdentityServer/IdentityServer.csproj" />
+  <Project Path="src/GodotGame/GodotGame.csproj" />
+</Solution>

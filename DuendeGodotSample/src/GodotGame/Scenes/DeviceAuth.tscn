@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/DeviceAuthFlow.cs" id="1_deviceauth"]
+[ext_resource type="Theme" path="res://Theme/DuendeTheme.tres" id="2_theme"]
+
+[node name="DeviceAuth" type="Control"]
+theme = ExtResource("2_theme")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_deviceauth")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.165, 0.161, 0.161, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(1100, 0)
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Device Code Login"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 56
+
+[node name="DescLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Scan the QR code or visit the URL and enter the code below."
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.69, 0.69, 0.69, 1)
+autowrap_mode = 3
+
+[node name="ContentRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="QrRect" type="TextureRect" parent="CenterContainer/VBoxContainer/ContentRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(300, 300)
+stretch_mode = 5
+expand_mode = 1
+
+[node name="CodeColumn" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ContentRow"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="CodeHeading" type="Label" parent="CenterContainer/VBoxContainer/ContentRow/CodeColumn"]
+layout_mode = 2
+text = "Your Code:"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.69, 0.69, 0.69, 1)
+
+[node name="CodeLabel" type="Label" parent="CenterContainer/VBoxContainer/ContentRow/CodeColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "------"
+theme_override_font_sizes/font_size = 64
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="UrlHeading" type="Label" parent="CenterContainer/VBoxContainer/ContentRow/CodeColumn"]
+layout_mode = 2
+text = "Or visit:"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.69, 0.69, 0.69, 1)
+
+[node name="UrlLabel" type="Label" parent="CenterContainer/VBoxContainer/ContentRow/CodeColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fetching..."
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.38, 0.984, 0.573, 1)
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Initializing..."
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.69, 0.69, 0.69, 1)
+autowrap_mode = 3
+
+[node name="OpenBrowserButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 90)
+text = "Open in Browser Instead"
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 90)
+text = "Back to Menu"

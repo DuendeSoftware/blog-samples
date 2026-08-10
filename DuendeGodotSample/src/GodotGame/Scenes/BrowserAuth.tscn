@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/BrowserAuthFlow.cs" id="1_browserauth"]
+[ext_resource type="Theme" path="res://Theme/DuendeTheme.tres" id="2_theme"]
+
+[node name="BrowserAuth" type="Control"]
+theme = ExtResource("2_theme")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_browserauth")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.165, 0.161, 0.161, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(900, 0)
+theme_override_constants/separation = 40
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Browser Login (PKCE)"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 56
+
+[node name="DescLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Authenticates via your system browser.\nUses Authorization Code + PKCE (RFC 7636)."
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.69, 0.69, 0.69, 1)
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 24)
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ready to authenticate..."
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.69, 0.69, 0.69, 1)
+autowrap_mode = 3
+
+[node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 24)
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 100)
+text = "Start Login"
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0, 90)
+text = "Back to Menu"

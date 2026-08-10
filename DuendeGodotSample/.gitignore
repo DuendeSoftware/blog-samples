@@ -1,0 +1,26 @@
+# .NET build artifacts
+bin/
+obj/
+
+# Godot cache and import
+.godot/
+*.import
+.mono/
+
+# Visual Studio
+*.user
+*.suo
+*.userprefs
+.vs/
+
+# Rider
+.idea/
+.weave/
+.junie/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IdentityServer auto-generated signing keys (dev only, no production value)
+src/IdentityServer/keys/

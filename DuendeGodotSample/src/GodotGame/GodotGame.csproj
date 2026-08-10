@@ -1,0 +1,12 @@
+<Project Sdk="Godot.NET.Sdk/4.7.0">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Duende.IdentityModel" Version="8.*" />
+    <PackageReference Include="QRCoder" Version="1.*" />
+  </ItemGroup>
+</Project>

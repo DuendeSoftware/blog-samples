@@ -1,0 +1,103 @@
+﻿:root {
+  --color-charcoal: #2a2929;
+  --color-building-green: #61fb92;
+  --color-calming-blue: #74acfb;
+  --color-beige: #f3f2e9;
+  --color-white: #fff;
+  --color-error: #c5122c;
+}
+
+body {
+  background-color: var(--color-beige);
+  color: var(--color-charcoal);
+}
+
+.nav-page .navbar {
+  background-color: var(--color-charcoal) !important;
+}
+
+.nav-page .navbar-brand {
+  color: var(--color-white) !important;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.nav-page .navbar-brand .brand-accent {
+  color: var(--color-building-green);
+}
+
+.icon-banner {
+  display: none; /* Hide old logo */
+}
+
+.body-container {
+  margin-top: 60px;
+  padding-bottom: 40px;
+}
+
+.welcome-page .logo {
+  width: 64px;
+}
+
+.welcome-page li {
+  list-style: none;
+  padding: 4px;
+}
+
+.logged-out-page iframe {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.btn-primary {
+  background-color: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #1a1919;
+  border-color: #1a1919;
+}
+
+.btn-primary:active {
+  background-color: #111;
+  border-color: #111;
+}
+
+a {
+  color: var(--color-charcoal);
+  font-weight: 500;
+}
+
+a:hover {
+  color: #111;
+}
+
+.grants-page .card {
+  margin-top: 20px;
+  border-bottom: 1px solid lightgray;
+}
+.grants-page .card .card-title {
+  font-size: 120%;
+  font-weight: bold;
+}
+.grants-page .card .card-title img {
+  width: 100px;
+  height: 100px;
+}
+.grants-page .card label {
+  font-weight: bold;
+}
+
+/* Form styling */
+.form-group label {
+  font-weight: 600;
+}
+
+input.form-control:focus {
+  border-color: var(--color-building-green);
+  box-shadow: 0 0 0 0.2rem rgba(97, 251, 146, 0.25);
+}
