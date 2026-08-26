@@ -1,0 +1,18 @@
+# Build output
+bin/
+obj/
+
+# Signing keys (auto-generated at runtime - never commit)
+keys/
+
+# Local database
+*.db
+*.db-shm
+*.db-wal
+
+# User-specific / OS
+.DS_Store
+*.user
+
+# Secrets (belongs in user-secrets, not the repo)
+appsettings.*.Local.json
