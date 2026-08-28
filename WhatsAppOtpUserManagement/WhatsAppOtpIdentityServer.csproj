@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>78c895f5-72e7-4fd9-a517-5f4d5999e70f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Duende.IdentityServer" Version="8.0.4" />
+    <PackageReference Include="Duende.Storage.Sqlite" Version="1.1.0" />
+    <PackageReference Include="Duende.UserManagement.IdentityServer8" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

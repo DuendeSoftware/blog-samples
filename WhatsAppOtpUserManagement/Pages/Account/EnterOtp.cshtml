@@ -1,0 +1,26 @@
+@page
+@model WhatsAppOtpIdentityServer.Pages.Account.EnterOtpModel
+@{
+    ViewData["Title"] = "Enter one-time password";
+}
+
+<h2>Enter one-time password</h2>
+
+<p>We sent a code to your WhatsApp. Enter it below to sign in.</p>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <ul>
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <li>@error.ErrorMessage</li>
+        }
+    </ul>
+}
+
+<form method="post">
+    <input type="hidden" asp-for="Input.Token" />
+    <label asp-for="Input.Code">One-time password</label>
+    <input asp-for="Input.Code" type="text" inputmode="numeric" autocomplete="one-time-code" autofocus />
+    <button type="submit">Sign in</button>
+</form>
