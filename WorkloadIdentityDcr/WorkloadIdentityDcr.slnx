@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="IdentityServerHost/IdentityServerHost.csproj" />
+  <Project Path="SimpleApi/SimpleApi.csproj" />
+  <Project Path="WorkloadClient/WorkloadClient.csproj" />
+</Solution>
