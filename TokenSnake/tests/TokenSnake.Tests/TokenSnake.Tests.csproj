@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TokenSnake.Game\TokenSnake.Game.csproj" />
+    <ProjectReference Include="..\..\src\TokenSnake.IdentityServer\TokenSnake.IdentityServer.csproj" />
+    <ProjectReference Include="..\..\src\TokenSnake.Web\TokenSnake.Web.csproj" />
+  </ItemGroup>
+</Project>
