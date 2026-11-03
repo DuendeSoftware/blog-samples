@@ -1,0 +1,31 @@
+@page
+@model TokenSnake.IdentityServer.Pages.Account.Login.IndexModel
+@{ Layout = null; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TokenSnake – pick a nickname</title>
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+<body>
+    <main class="login">
+        <h1>TokenSnake</h1>
+        <p>Pick a nickname to play. No password, no account.</p>
+
+        <form method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <label asp-for="Nickname">Nickname</label>
+            <input asp-for="Nickname" autocomplete="off" autofocus maxlength="60" />
+            <span asp-validation-for="Nickname" class="error"></span>
+            @if (Model.Message is not null)
+            {
+                <p class="error" role="alert">@Model.Message</p>
+            }
+            <button type="submit">Play</button>
+        </form>
+        <img class="logo" src="~/assets/duende-logo-black.png" alt="Duende" />
+    </main>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TokenSnake.AppHost/TokenSnake.AppHost.csproj" />
+    <Project Path="src/TokenSnake.Game/TokenSnake.Game.csproj" />
+    <Project Path="src/TokenSnake.IdentityServer/TokenSnake.IdentityServer.csproj" />
+    <Project Path="src/TokenSnake.Web/TokenSnake.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TokenSnake.Tests/TokenSnake.Tests.csproj" />
+  </Folder>
+</Solution>

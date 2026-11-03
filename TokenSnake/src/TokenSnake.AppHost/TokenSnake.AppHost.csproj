@@ -1,0 +1,11 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.6.1">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsAspireHost>true</IsAspireHost>
+    <NoWarn>$(NoWarn);ASPIRE010</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TokenSnake.IdentityServer\TokenSnake.IdentityServer.csproj" />
+    <ProjectReference Include="..\TokenSnake.Web\TokenSnake.Web.csproj" />
+  </ItemGroup>
+</Project>

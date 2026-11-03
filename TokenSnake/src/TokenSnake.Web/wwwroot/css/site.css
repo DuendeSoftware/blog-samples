@@ -1,0 +1,134 @@
+/* Duende brand: sand page, ink board, green snake, blue pellet. Textures live in /assets (same origin, CSP-safe); fonts are system stacks (override the --font-* variables to use brand fonts). */
+
+:root {
+  --sand: #faf8f5;
+  --sand-deep: #e8e4de;
+  --ink: #1a1a17;
+  --board: #1a1a17;
+  --snake: #61fb92;
+  --snake-head: #81ff8c;
+  --pellet: #74acfb;
+  --muted: #5c5c5c;
+  --muted-on-ink: #a8a59f;
+  --danger: #c5122c;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--sand); color: var(--ink); font-family: var(--font-ui); font-size: 1rem; line-height: 1.5; }
+[hidden] { display: none !important; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; }
+
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; }
+.user-box { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; color: var(--muted); }
+.user-box strong { color: var(--ink); }
+.wordmark { margin: 0; font-size: 1.75rem; letter-spacing: -0.01em; }
+
+.layout { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 0 1.5rem 2rem; align-items: flex-start; }
+.stage { flex: 1 1 520px; max-width: 560px; min-width: 0; }
+#jwt-panel { flex: 1 1 480px; max-width: 560px; min-width: 0; }
+
+.screen { padding: 1rem 0; }
+
+/* Start and game-over: texture hero with the logo. */
+#screen-start, #screen-over {
+  position: relative;
+  padding: 2rem 1.75rem 4.5rem;
+  border-radius: 12px;
+  background: var(--sand) url("/assets/texture-calming-chaos-10.png") center / cover no-repeat;
+  color: var(--ink);
+}
+#screen-over { background-image: url("/assets/texture-calming-chaos-11.png"); }
+#screen-start::after, #screen-over::after {
+  content: "";
+  position: absolute; left: 1.75rem; bottom: 1.25rem;
+  width: 7.5rem; height: 1.9rem;
+  background: url("/assets/duende-logo-black.png") left center / contain no-repeat;
+}
+#screen-start h2, #screen-over h2 { margin-top: 0; font-size: 2rem; }
+#screen-over h3 { margin-bottom: 0.25rem; }
+#screen-start p, #screen-over p, #leaderboard { max-width: 34rem; }
+#leaderboard { background: rgba(250, 248, 245, 0.85); border-radius: 8px; padding: 0.75rem 1rem 0.75rem 2.5rem; margin: 0.5rem 0 1rem; font-variant-numeric: tabular-nums; }
+
+button {
+  font: inherit; font-weight: 600; padding: 0.65rem 1.4rem; border: 2px solid var(--ink); border-radius: 8px;
+  background: var(--snake); color: var(--ink); cursor: pointer;
+}
+button:hover { background: var(--snake-head); }
+button:active { transform: translateY(1px); }
+button.secondary { white-space: nowrap; background: transparent; padding: 0.35rem 0.9rem; }
+button.secondary:hover { background: var(--sand-deep); }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.actions .secondary { padding: 0.65rem 1.4rem; }
+.hint { margin: 0.6rem 0 0; font-size: 0.85rem; color: var(--muted); }
+#leaderboard li.mine { background: rgba(97, 251, 146, 0.45); border-left: 4px solid var(--snake); font-weight: 700; padding-left: 0.4rem; margin-left: -0.5rem; }
+button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.error { color: var(--danger); min-height: 1.2em; font-weight: 500; }
+
+.hud { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; margin: 0 0 0.75rem; }
+.hud div { min-width: 4rem; }
+.hud dt { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.hud dd { margin: 0; font-weight: 600; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+#hud-timer.danger { color: var(--danger); }
+
+#board { display: block; width: 100%; max-width: 480px; height: auto; touch-action: none; border-radius: 8px; border: 3px solid var(--ink); box-shadow: 0 0 0 4px var(--snake), 0 8px 24px rgba(26, 26, 23, 0.25); }
+
+/* JWT panel: compact HUD on ink, like the board. Header blue, payload green, signature muted. */
+#jwt-panel { background: var(--board); color: var(--sand); border-radius: 12px; padding: 0.9rem 1rem; font-size: 12px; line-height: 1.4; }
+#jwt-panel, .jwt-body { min-width: 0; }
+.jwt-head { display: flex; align-items: baseline; gap: 0.6rem; }
+.jwt-title { margin: 0; font-size: 1.25rem; color: var(--sand); }
+.jwt-sub, .jwt-label { color: var(--muted-on-ink); font-size: 12px; }
+.jwt-caption { margin: 0.35rem 0 0.5rem; color: var(--muted-on-ink); }
+.jwt-bff { margin: 0.45rem 0 0; padding: 0.35rem 0.6rem; border-left: 3px solid var(--pellet); background: rgba(255, 255, 255, 0.06); color: var(--sand); font-size: 12px; }
+#jwt-panel .jwt-bff a { font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.jwt-copy { margin: 0.4rem 0; }
+.jwt-empty { color: var(--muted-on-ink); font-style: italic; }
+.jwt-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+#jwt-panel a { color: var(--pellet); }
+#jwt-panel a:focus-visible { outline: 3px solid var(--pellet); outline-offset: 2px; }
+#jwt-panel summary { cursor: pointer; padding: 0.25rem 0; color: var(--sand); }
+#jwt-panel summary:focus-visible, #jwt-panel button:focus-visible, .jwt-timeline li:focus-visible { outline: 3px solid var(--pellet); outline-offset: 2px; }
+.jwt-learn { margin-bottom: 0.4rem; }
+.jwt-more { border-top: 1px solid #33332f; }
+.jwt-more-body { max-height: 10rem; overflow: auto; padding-bottom: 0.5rem; }
+
+.jwt-claims { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 13px; margin: 0.25rem 0 0.6rem; }
+.jwt-claims th { text-align: left; font-weight: 400; }
+.jwt-claims thead th { font-family: var(--font-ui); font-size: 12px; color: var(--muted-on-ink); height: 22px; }
+.jwt-claims tbody tr { height: 30px; border-top: 1px solid #33332f; border-left: 3px solid transparent; }
+.jwt-claims td, .jwt-claims tbody th { padding: 0 0.4rem; }
+.jwt-name, .jwt-change { color: var(--muted-on-ink); }
+.jwt-value { color: var(--sand); }
+.jwt-claims tr.changed { background: rgba(97, 251, 146, 0.14); box-shadow: inset 3px 0 0 var(--snake); font-weight: 700; }
+.jwt-claims tr.changed .jwt-name, .jwt-claims tr.changed .jwt-change { color: var(--sand); }
+
+.jwt-expiry { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
+.jwt-bar { flex: 1; height: 0.6rem; background: #33332f; border-radius: 3px; overflow: hidden; }
+.jwt-bar-fill { height: 100%; background: var(--snake); }
+.jwt-bar-fill.urgent { background: #ff6b81; }
+.jwt-countdown-text { min-width: 5.5rem; text-align: center; font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; padding: 0.1rem 0.4rem; border-radius: 4px; }
+.jwt-countdown-text.urgent { background: var(--danger); color: var(--sand); font-weight: 700; }
+
+.jwt-history { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.jwt-timeline { display: flex; gap: 0.4rem; list-style: none; margin: 0; padding: 0.4rem 0.25rem; overflow-x: auto; }
+.jwt-timeline li { flex: none; width: 0.8rem; height: 0.8rem; border-radius: 50%; background: #5b5b55; }
+.jwt-timeline li.newest { background: var(--snake); box-shadow: 0 0 0 3px rgba(97, 251, 146, 0.35); }
+
+.jwt-encoded, .json { font-family: var(--font-mono); font-size: 12px; word-break: break-all; margin: 0 0 0.4rem; }
+.jwt-header { color: var(--pellet); }
+.jwt-payload { color: var(--snake); }
+.jwt-signature { color: var(--muted-on-ink); }
+.json-prop { padding-left: 1rem; border-left: 3px solid transparent; }
+.json-prop.changed { background: rgba(97, 251, 146, 0.18); border-left-color: var(--snake); font-weight: 700; }
+.jwt-copy-btn { margin-bottom: 0.4rem; padding: 0.25rem 0.8rem; font-size: 12px; border-width: 1px; }
+
+@media (max-width: 700px) {
+  #jwt-panel { flex-basis: 100%; max-width: none; }
+  .layout { padding: 0 1rem 1.5rem; gap: 1rem; }
+  .site-header { padding: 0.75rem 1rem; }
+  .user-box > span { display: none; } /* the HUD shows the name; keep the header to one line */
+  #screen-start h2, #screen-over h2 { font-size: 1.6rem; }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TokenSnake</title>
+  <link rel="stylesheet" href="/css/site.css">
+  <!-- No inline scripts or styles: the Content-Security-Policy is script-src 'self'. -->
+  <script type="module" src="/js/ui.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="wordmark">TokenSnake</h1>
+    <div id="user-box" class="user-box" hidden>
+      <span>Signed in as <strong id="user-name"></strong></span>
+      <button id="signout-btn" class="secondary" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <div class="stage">
+      <section id="screen-start" class="screen">
+        <h2>Eat pellets. Beat the clock.</h2>
+        <p>Every pellet you eat swaps your access token for a new one. When the token expires, the game is over.</p>
+        <p id="welcome"></p>
+        <p id="start-message" class="error" role="alert"></p>
+        <button id="login-btn" type="button">Sign in &amp; play</button>
+        <button id="play-btn" type="button" hidden>Start game</button>
+      </section>
+
+      <section id="screen-game" class="screen" hidden>
+        <dl class="hud">
+          <div><dt>Player</dt><dd id="hud-name"></dd></div>
+          <div><dt>Score</dt><dd id="hud-score">0</dd></div>
+          <div><dt>Length</dt><dd id="hud-length">0</dd></div>
+          <div><dt>Level</dt><dd id="hud-level">1</dd></div>
+          <div><dt>Next level</dt><dd id="hud-next">5 pellets</dd></div>
+          <div><dt>Token expires in</dt><dd id="hud-timer">-</dd></div>
+        </dl>
+        <canvas id="board" width="480" height="480" aria-label="Game board"></canvas>
+        <p class="hint">Steer with the arrow keys or WASD. On a touch screen, swipe on the board.</p>
+      </section>
+
+      <section id="screen-over" class="screen" hidden>
+        <h2 id="over-title"></h2>
+        <p id="over-message"></p>
+        <p>Final score: <strong id="over-score">0</strong></p>
+        <p id="submit-status"></p>
+        <h3>Top 10</h3>
+        <ol id="leaderboard"></ol>
+        <div class="actions">
+          <button id="again-btn" type="button">Play again</button>
+          <button id="change-btn" class="secondary" type="button">Change nickname</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- jwt-panel.js renders the decoded token here. -->
+    <aside id="jwt-panel" aria-label="Your access token (JWT)"></aside>
+  </main>
+</body>
+</html>
